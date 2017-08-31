@@ -27,8 +27,14 @@ class LinkedList():
 
 	def reverse_list(self):
 		predecessor, current, successor = None, self.head, self.head
-		while(current):
-			successor, current.next, predecessor, current = current.next, predecessor, current, successor
+        # https://stackoverflow.com/a/8725769/6613065 
+        # The right side operators are evaluated first,
+        # so not good for variables that are both on rhs and lhs in a loop
+        while(current):
+			successor = current.next
+			current.next = predecessor
+			predecessor = current
+			current = successor
 		self.head = predecessor
 
 		node = self.head
