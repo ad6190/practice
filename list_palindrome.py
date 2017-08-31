@@ -25,6 +25,20 @@ class LinkedList():
 				node = node.next
 		return
 
+	def reverse_list(self):
+		predecessor, current, successor = None, self.head, self.head
+		while(current):
+			successor, current.next, predecessor, current = current.next, predecessor, current, successor
+		self.head = predecessor
+
+		node = self.head
+		while(node):
+			print(node.val)
+			node = node.next
+
+		return
+
+
 if __name__ == '__main__':
 	linkedlist = LinkedList()
 	linkedlist.insert(1)
@@ -32,4 +46,4 @@ if __name__ == '__main__':
 	linkedlist.insert(3)
 	linkedlist.insert(4)
 	linkedlist.print_all()
- 
+	linkedlist.reverse_list() 
