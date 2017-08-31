@@ -30,9 +30,9 @@ class LinkedList():
 		# https://stackoverflow.com/a/8725769/6613065 
 		# The right side operators are evaluated first,
 		# so not good for variables that are both on rhs 
-        # and lhs in a loop - Unless one is very careful. 
+		# and lhs in a loop - Unless one is very careful. 
 		# May be, I will get with practice
-        while(current):
+		while(current):
 			successor = current.next
 			current.next = predecessor
 			predecessor = current
@@ -46,6 +46,17 @@ class LinkedList():
 
 		return
 
+	def reverse_recursion(self, node):
+		if node.next == None:
+			self.head = node
+			return 
+		
+		self.reverse_recursion(node.next)
+		temp = node.next
+		temp.next = node
+		node.next = None
+
+
 
 if __name__ == '__main__':
 	linkedlist = LinkedList()
@@ -55,3 +66,5 @@ if __name__ == '__main__':
 	linkedlist.insert(4)
 	linkedlist.print_all()
 	linkedlist.reverse_list() 
+	linkedlist.reverse_recursion(linkedlist.head)
+	linkedlist.print_all()
